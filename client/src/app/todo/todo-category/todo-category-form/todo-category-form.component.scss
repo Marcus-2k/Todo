@@ -1,0 +1,85 @@
+.todo__category-form {
+  &--button {
+    width: 220px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background-color: #faa627;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+      transition: 0.4s;
+      background-color: #d58d21;
+    }
+  }
+}
+
+.box {
+  &__input {
+    width: 500px;
+  }
+  &__line {
+    width: 520px;
+  }
+}
+
+.todo__category-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  .category {
+    margin: 270px auto 0 auto;
+    background-color: #fff;
+    padding: 50px;
+    width: 40%;
+    border-radius: 10px;
+    position: relative;
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      &-button {
+        max-width: 200px;
+        border-radius: 5px;
+        border: none;
+        color: #fff;
+        background-color: #faa627;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.4s;
+        &:hover {
+          transition: 0.4s;
+          background-color: #d58d21;
+        }
+      }
+    }
+    .close-button {
+      border-radius: 50%;
+      border: 5px solid #fff;
+      font-size: 50px;
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      color: #fff;
+      cursor: pointer;
+      height: 50px;
+      width: 50px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.4s;
+      &:hover {
+        transition: 0.4s;
+        border: 5px solid #faa627;
+        color: #faa627;
+      }
+    }
+  }
+}

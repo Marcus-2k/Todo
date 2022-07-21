@@ -1,0 +1,25 @@
+.todo {
+  display: flex;
+  height: 100%;
+  min-height: calc(100vh - 70px);
+  .todo__category {
+    position: relative;
+  }
+}
+
+.container-todo {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 10px;
+  .container-todo__logo {
+    display: flex;
+    justify-content: center;
+    background-color: #faa627;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    .todo__title {
+      color: #fff;
+    }
+  }
+}

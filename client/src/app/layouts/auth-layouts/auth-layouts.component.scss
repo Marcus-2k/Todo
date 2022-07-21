@@ -1,0 +1,55 @@
+.header {
+  background-color: #349948;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  &__container {
+    padding: 0 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-title {
+      h1 {
+        cursor: pointer;
+        color: #fff;
+      }
+    }
+    &-auth {
+      .active__link {
+        transition: 0.4s;
+        background-color: #d48d21;
+        border: 2px solid #d48d21;
+        &:hover {
+          background: none;
+          transition: 0.4s;
+          border: 2px solid #d48d21;
+        }
+      }
+      button {
+        border: none;
+        margin: 0 10px;
+        cursor: pointer;
+        height: 50px;
+        background-color: #faa627;
+        padding: 0 25px;
+        color: #fff;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 2px solid #faa627;
+        transition: 0.4s;
+        &:hover {
+          transition: 0.4s;
+          background: none;
+          border: 2px solid #faa627;
+        }
+      }
+      .login {
+      }
+      .register {
+      }
+    }
+  }
+}

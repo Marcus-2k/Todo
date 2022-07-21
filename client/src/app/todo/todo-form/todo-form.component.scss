@@ -1,0 +1,109 @@
+.box {
+  &__input {
+    width: 700px;
+  }
+  &__line {
+    width: 720px;
+  }
+}
+
+.todo__form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 10px 15px 10px;
+  background-color: #fff;
+  border: 1px solid #b1b1b1;
+  // border-radius: 10px;
+  &-select {
+    height: 40px;
+    width: 210px;
+    text-overflow: ellipsis;
+    font-family: "IBM Plex Sans Thai Looped", sans-serif;
+    font-size: 20px;
+    background-color: #faa627;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.4s;
+    &:hover {
+      transition: 0.4s;
+      background-color: #d58d21;
+    }
+  }
+  &-button {
+    height: 40px;
+    width: 180px;
+    cursor: pointer;
+    border: none;
+    background-color: #faa627;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    font-family: "IBM Plex Sans Thai Looped", sans-serif;
+    transition: 0.4s;
+    &:hover {
+      transition: 0.4s;
+      background-color: #d58d21;
+    }
+  }
+}
+
+.todo__category.acitve__category {
+  display: block;
+  opacity: 1;
+  transition: 1s;
+}
+
+.todo__category {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.7);
+  transition: 1s;
+  &-content {
+    text-align: center;
+    margin: auto;
+    width: 60%;
+    padding: 100px 20px;
+    top: 30%;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    .todo__category-title {
+      width: 800px;
+      margin: 0 auto;
+      font-size: 30px;
+      word-wrap: break-word;
+    }
+    .todo__category--close {
+      border-radius: 50%;
+      border: 5px solid #fff;
+      font-size: 50px;
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      color: #fff;
+      cursor: pointer;
+      height: 50px;
+      width: 50px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.4s;
+      &:hover {
+        transition: 0.4s;
+        border: 5px solid #faa627;
+        color: #faa627;
+      }
+    }
+  }
+}

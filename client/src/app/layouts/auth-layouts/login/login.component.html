@@ -1,0 +1,98 @@
+<!--  -->
+<div class="container-login">
+  <h1 class="login__title">Увійти в Особистий кабінет</h1>
+  <form
+    class="container-login__form"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="content__form form__email">
+      <label
+        for=""
+        class="content__form-label"
+        [ngClass]="{
+          'label-disabled':
+            form.controls['email'].invalid && form.controls['email'].touched
+        }"
+        >Ел. пошта</label
+      >
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        class="content__form-input"
+        [ngClass]="{
+          'input-disabled':
+            form.controls['email'].invalid && form.controls['email'].touched
+        }"
+      />
+      <span
+        class="help__text-input"
+        *ngIf="form.controls['email'].invalid && form.controls['email'].touched"
+      >
+        <span
+          class="error-intut-data"
+          *ngIf="form.controls['email'].errors?.['required']"
+          >Емейл не має бути порожнім</span
+        >
+        <span
+          class="error-intut-data"
+          *ngIf="form.controls['email'].errors?.['email']"
+          >Введіть корректний емейл</span
+        >
+      </span>
+    </div>
+
+    <div class="content__form form__password">
+      <label
+        for=""
+        class="content__form-label"
+        [ngClass]="{
+          'label-disabled':
+            form.controls['password'].invalid &&
+            form.controls['password'].touched
+        }"
+        >Пароль</label
+      >
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        class="content__form-input"
+        [ngClass]="{
+          'input-disabled':
+            form.controls['password'].invalid &&
+            form.controls['password'].touched
+        }"
+      />
+      <span
+        class="help__text-input"
+        *ngIf="
+          form.controls['password'].invalid && form.controls['password'].touched
+        "
+      >
+        <span
+          class="error-intut-data"
+          *ngIf="form.controls['password'].errors?.['required']"
+          >Пароль не має бути порожнім</span
+        >
+        <span
+          class="error-intut-data"
+          *ngIf="form.controls['password'].errors?.['minlength']"
+        >
+          Пароль занадто короткий</span
+        >
+      </span>
+    </div>
+
+    <div class="content__form form__button">
+      <button
+        type="submit"
+        class="content__form-button"
+        [disabled]="form.invalid || form.disabled"
+      >
+        Увійти
+      </button>
+    </div>
+  </form>
+</div>

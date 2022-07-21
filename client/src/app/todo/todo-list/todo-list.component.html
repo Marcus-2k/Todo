@@ -1,0 +1,146 @@
+<!--  -->
+<ul class="todo__list">
+  <ng-container
+    *ngFor="let todo of todoTaskList | todoSearch: inputBySearch; let i = index"
+  >
+    <li
+      #task
+      class="todo__list-item"
+      *ngIf="activeCategory === todo.category || activeCategory === 0"
+    >
+      <!--  -->
+      <div class="todo__list-item--info">
+        <!--  -->
+        <div class="info__content">
+          <div
+            class="info__content-box"
+            [ngClass]="{
+              active__content: todo.update
+            }"
+          >
+            <input
+              type="checkbox"
+              class="custom-checkbox info__content-box-input"
+              [id]="i"
+              [checked]="todo.condition"
+              #checkbox
+              (click)="checkboxTodo(checkbox.checked, todo)"
+            />
+            <label
+              class="info__content-box-label"
+              [ngClass]="{
+                'label-active-text': checkbox.checked,
+                'label-new-name': todo.update
+              }"
+              [for]="i"
+              >{{ todo.name }}</label
+            >
+          </div>
+          <div
+            class="box"
+            [ngClass]="{
+              'box-active': todo.update
+            }"
+          >
+            <input
+              #newName
+              type="text"
+              class="box__input"
+              required
+              [(ngModel)]="todo.name"
+            />
+            <span class="box__line"></span>
+            <label class="box__label">Нове ім'я задачі</label>
+          </div>
+          <div class="name-category">
+            <div
+              class="box-category"
+              [ngClass]="{
+                'box-category__active': todo.update
+              }"
+            >
+              <p class="box-category__title" *ngIf="todo.category >= 1">
+                {{ categoryName[todo.category].name }}
+              </p>
+              <p class="box-category__title" *ngIf="todo.category === -1">
+                Не вибрана категорія
+              </p>
+            </div>
+            <div
+              class="box-category"
+              [ngClass]="{
+                'box-category__active': !todo.update
+              }"
+            >
+              <select name="" id="" #selectCategory class="category__select">
+                <ng-container
+                  *ngFor="let category of categoryName; let idx = index"
+                >
+                  <option
+                    [value]="idx"
+                    [selected]="todo.category === idx"
+                    *ngIf="category.name !== 'Всі задачі'; else optionHelp"
+                  >
+                    {{ category.name }}
+                  </option>
+                </ng-container>
+                <ng-template #optionHelp>
+                  <option value="-1">Категорія не вибрана</option>
+                </ng-template>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+      </div>
+      <!--  -->
+      <div class="todo__list-item--btn">
+        <button
+          (click)="editBtn(todo)"
+          class="button__edit"
+          [ngClass]="{
+            'edit-active': todo.update
+          }"
+        >
+          Змінити
+        </button>
+        <button
+          (click)="saveBtn(todo, newName.value, selectCategory.value)"
+          class="button__save"
+          [ngClass]="{
+            'save-active': todo.update
+          }"
+        >
+          Зберегти
+        </button>
+        <button (click)="deleteBtn(todo, i)" class="button__delete">
+          Видалити
+        </button>
+      </div>
+      <!--  -->
+    </li>
+  </ng-container>
+
+  <!-- Загрузка з серверу закінчена, задач немає -->
+  <li class="not__task" *ngIf="todoTaskList.length === 0 && !loader">
+    У вас ще немає задач
+  </li>
+
+  <!-- Запит на сервер, для отримання задач -->
+  <div *ngIf="loader" class="loader">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</ul>

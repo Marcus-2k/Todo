@@ -1,0 +1,27 @@
+<!-- Forms New Task -->
+<div class="todo__form">
+  <div class="box">
+    <input type="text" class="box__input" required [(ngModel)]="todoNewName" />
+    <span class="box__line"></span>
+    <label class="box__label">Введіть назву нової задачі</label>
+  </div>
+  <select name="" id="" #category class="todo__form-select">
+    <ng-container *ngFor="let category of categoryName; let i = index">
+      <option
+        [value]="i"
+        *ngIf="category.name !== 'Всі задачі'; else optionZero"
+      >
+        {{ category.name }}
+      </option>
+    </ng-container>
+
+    <option value="-1">Не вказувати категорію</option>
+    <ng-template #optionZero>
+      <!-- <option value="0" selected="selected">Виберіть категорію</option> -->
+      <option value="0" selected>Виберіть категорію</option>
+    </ng-template>
+  </select>
+  <button class="todo__form-button" (click)="addTaskTodoForm(category.value)">
+    Додати задачу
+  </button>
+</div>

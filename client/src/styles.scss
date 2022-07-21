@@ -1,0 +1,303 @@
+//
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Devanagari:wght@400;600;700&display=swap");
+// @import url("assets/materialize.css");
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "IBM Plex Sans Thai Looped", sans-serif;
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+    background-color: #900;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #faa627;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #faa627;
+  }
+}
+
+/* Checkbox */
+.custom-checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.custom-checkbox + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  position: relative;
+  margin: 0px 0px 0px 20px;
+}
+.custom-checkbox + label::before {
+  content: "";
+  cursor: pointer;
+  position: absolute;
+  top: 1px;
+  left: -25px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #adb5bd;
+  border-radius: 0.25em;
+  margin: 0px 0px 0px 0px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+.custom-checkbox:checked + label::before {
+  border-color: #0b76ef;
+  background-color: #0b76ef;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+}
+/* стили при наведении курсора на checkbox */
+.custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
+  border-color: #b3d7ff;
+}
+/* стили для активного состояния чекбокса (при нажатии на него) */
+.custom-checkbox:not(:disabled):active + label::before {
+  background-color: #b3d7ff;
+  border-color: #b3d7ff;
+}
+/* стили для чекбокса, находящегося в фокусе */
+.custom-checkbox:focus + label::before {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+.custom-checkbox:focus:not(:checked) + label::before {
+  border-color: #80bdff;
+}
+/* стили для чекбокса, находящегося в состоянии disabled */
+.custom-checkbox:disabled + label::before {
+  background-color: #e9ecef;
+}
+/* Checkbox */
+
+/* Стилі для всіх input'в на сайті */
+/*
+
+Якщо потрібно врегулювати їхню довжину, то добавити ось це.
+
+.box {
+  &__input {
+    width: 500px;
+  }
+  &__line {
+    width: 520px;
+  }
+}
+*/
+
+.box {
+  position: relative;
+  // Input
+  &__input {
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+  }
+  // Label
+  &__label {
+    position: absolute;
+    color: #000;
+    font-size: 20px;
+    left: 10px;
+    top: 15px;
+    transition: 0.2s;
+    pointer-events: none;
+  }
+  /* Active State */
+  &__input:focus ~ .box__label,
+  &__input:valid ~ .box__label {
+    top: -15px;
+    font-size: 14px;
+    color: #faa627;
+  }
+  // Animation Line
+  &__line {
+    position: relative;
+    display: block;
+  }
+  &__line:before,
+  &__line:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    background: #faa627;
+    transition: 0.2s;
+  }
+  &__line:before {
+    left: 50%;
+  }
+  &__line:after {
+    right: 50%;
+  }
+  /* Active State */
+  &__input:focus ~ .box__line:before,
+  &__input:focus ~ .box__line:after {
+    width: 50%;
+  }
+}
+/* Стилі для всіх Input на сайті */
+
+/* Toast, виводить помилки на екран */
+.toast {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+#toast-container {
+  display: block;
+  position: fixed;
+  z-index: 10000;
+}
+@media only screen and (max-width: 600px) {
+  #toast-container {
+    min-width: 100%;
+    bottom: 0%;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  #toast-container {
+    left: 5%;
+    bottom: 7%;
+    max-width: 90%;
+  }
+}
+@media only screen and (min-width: 993px) {
+  #toast-container {
+    top: 10%;
+    right: 7%;
+    max-width: 86%;
+  }
+}
+.toast {
+  border-radius: 2px;
+  top: 35px;
+  width: auto;
+  margin-top: 10px;
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  min-height: 48px;
+  line-height: 1.5em;
+  background-color: #323232;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+.toast .toast-action {
+  color: #eeff41;
+  font-weight: 500;
+  margin-right: -25px;
+  margin-left: 3rem;
+}
+.toast.rounded {
+  border-radius: 24px;
+}
+@media only screen and (max-width: 600px) {
+  .toast {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+/* Toast, виводить помилки на екран */
+
+/* Loader */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .lds-spinner {
+    color: official;
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-spinner div {
+    transform-origin: 40px 40px;
+    animation: lds-spinner 1.2s linear infinite;
+  }
+  .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 37px;
+    width: 6px;
+    height: 18px;
+    border-radius: 20%;
+    background: #faa627;
+  }
+  .lds-spinner div:nth-child(1) {
+    transform: rotate(0deg);
+    animation-delay: -1.1s;
+  }
+  .lds-spinner div:nth-child(2) {
+    transform: rotate(30deg);
+    animation-delay: -1s;
+  }
+  .lds-spinner div:nth-child(3) {
+    transform: rotate(60deg);
+    animation-delay: -0.9s;
+  }
+  .lds-spinner div:nth-child(4) {
+    transform: rotate(90deg);
+    animation-delay: -0.8s;
+  }
+  .lds-spinner div:nth-child(5) {
+    transform: rotate(120deg);
+    animation-delay: -0.7s;
+  }
+  .lds-spinner div:nth-child(6) {
+    transform: rotate(150deg);
+    animation-delay: -0.6s;
+  }
+  .lds-spinner div:nth-child(7) {
+    transform: rotate(180deg);
+    animation-delay: -0.5s;
+  }
+  .lds-spinner div:nth-child(8) {
+    transform: rotate(210deg);
+    animation-delay: -0.4s;
+  }
+  .lds-spinner div:nth-child(9) {
+    transform: rotate(240deg);
+    animation-delay: -0.3s;
+  }
+  .lds-spinner div:nth-child(10) {
+    transform: rotate(270deg);
+    animation-delay: -0.2s;
+  }
+  .lds-spinner div:nth-child(11) {
+    transform: rotate(300deg);
+    animation-delay: -0.1s;
+  }
+  .lds-spinner div:nth-child(12) {
+    transform: rotate(330deg);
+    animation-delay: 0s;
+  }
+  @keyframes lds-spinner {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+/* Loader */

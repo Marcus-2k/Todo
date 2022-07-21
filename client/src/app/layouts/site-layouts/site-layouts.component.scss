@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  height: 70px;
+  background-color: #349948;
+  &__content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    &-menu {
+      display: flex;
+      align-items: center;
+      .menu__link {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 10px;
+        margin: 0 10px;
+        transition: 0.4s;
+        position: relative;
+        cursor: pointer;
+        &:hover {
+          transition: 0.4s;
+          color: #faa627;
+        }
+      }
+      .menu__link-active {
+        color: #faa627;
+        transition: 0.4s;
+        border-radius: 10px;
+      }
+    }
+  }
+}

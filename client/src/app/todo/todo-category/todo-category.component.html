@@ -1,0 +1,51 @@
+<!--  -->
+<div class="todo__category">
+  <h2 class="todo__category-title">Список категорій</h2>
+  <div class="todo__category-block">
+    <ul class="todo__category-list">
+      <li
+        class="todo__category-list--item"
+        *ngFor="let category of categoryName; let i = index"
+      >
+        <a
+          class="category__box"
+          [ngClass]="{ 'active--item': checkCategory(i) }"
+        >
+          <a class="category__name" (click)="onSelect(i)">
+            {{ category.name }}
+          </a>
+          <a
+            title="Видалити категорію"
+            [ngClass]="{
+              category__delete: i > 0,
+              category__delete__none: i === 0
+            }"
+          >
+            <a *ngIf="i !== 0" (click)="removeCategoryName(category, i)">
+              &Cross;
+            </a>
+          </a>
+        </a>
+      </li>
+      <div *ngIf="loader" class="loader">
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </ul>
+  </div>
+  <div class="todo__form">
+    <app-todo-category-form></app-todo-category-form>
+  </div>
+</div>

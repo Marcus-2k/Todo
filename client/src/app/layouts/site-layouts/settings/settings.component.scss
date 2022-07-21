@@ -1,0 +1,16 @@
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 250px;
+  &__content {
+    border-radius: 10px;
+    background-color: #faa627;
+    h2 {
+      padding: 25px;
+      color: #fff;
+    }
+  }
+}

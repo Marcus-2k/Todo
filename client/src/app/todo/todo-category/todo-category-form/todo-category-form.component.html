@@ -1,0 +1,26 @@
+<!--  -->
+
+<div class="todo__category-form">
+  <button class="todo__category-form--button" (click)="addCategoryPopuap(1)">
+    Додати категорію
+  </button>
+</div>
+
+<div class="todo__category-popup" *ngIf="categoryPopuap">
+  <form class="category">
+    <div class="category__content">
+      <div class="box">
+        <input type="text" class="box__input" #categoryNameInput required />
+        <span class="box__line"></span>
+        <label class="box__label">Введіть назву категорію</label>
+      </div>
+      <button
+        class="category__content-button"
+        (click)="addCategoryName(categoryNameInput.value)"
+      >
+        Додати категорію
+      </button>
+    </div>
+    <span class="close-button" (click)="addCategoryPopuap(0)">&Cross;</span>
+  </form>
+</div>

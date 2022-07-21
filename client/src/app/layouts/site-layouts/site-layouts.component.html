@@ -1,0 +1,29 @@
+<!--  -->
+<header class="header">
+  <div class="header__content">
+    <nav class="header__content-menu">
+      <a
+        routerLink="/todo"
+        routerLinkActive="menu__link-active"
+        class="menu__link"
+        >Мої задачі</a
+      >
+      <a
+        routerLink="/settings"
+        routerLinkActive="menu__link-active"
+        class="menu__link"
+        title="In development"
+        >Налаштування</a
+      >
+      <a
+        routerLink="/account"
+        routerLinkActive="menu__link-active"
+        class="menu__link"
+        >Акаунт
+      </a>
+      <a class="menu__link" (click)="logout()">Вийти</a>
+    </nav>
+  </div>
+</header>
+
+<router-outlet></router-outlet>

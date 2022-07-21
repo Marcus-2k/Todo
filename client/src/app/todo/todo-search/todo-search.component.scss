@@ -1,0 +1,16 @@
+.search {
+  max-width: 1200px;
+  background-color: #fff;
+  padding: 25px 10px 15px 10px;
+  border: 1px solid #b1b1b1;
+  // border-radius: 10px;
+}
+
+.box {
+  &__input {
+    width: 1160px;
+  }
+  &__line {
+    width: 100%;
+  }
+}

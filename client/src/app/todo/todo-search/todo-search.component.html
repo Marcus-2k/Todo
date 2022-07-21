@@ -1,0 +1,15 @@
+<!--  -->
+
+<div class="search">
+  <div class="box">
+    <input
+      type="text"
+      class="box__input"
+      required
+      (keyup)="inputSearchPipe(inputPipe.value)"
+      #inputPipe
+    />
+    <span class="box__line"></span>
+    <label class="box__label">Пошук задачі по імені</label>
+  </div>
+</div>

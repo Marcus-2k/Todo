@@ -1,0 +1,25 @@
+<!--  -->
+
+<header class="header">
+  <div class="header__container">
+    <div class="header__container-title">
+      <h1 routerLink="/">TODO</h1>
+    </div>
+    <div class="header__container-auth">
+      <button class="login" routerLink="login" routerLinkActive="active__link">
+        Вхід
+      </button>
+      <button
+        class="register"
+        routerLink="register"
+        routerLinkActive="active__link"
+      >
+        Реєстрація
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="auth-layouts">
+  <router-outlet></router-outlet>
+</div>
