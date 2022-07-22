@@ -6,7 +6,6 @@ import { environment } from "src/environments/environment";
 })
 export class UrlServerService {
   constructor() {
-    // this.HOST = process.env.HOST;
     this.HOST = environment.HOST;
     this.PORT = environment.PORT;
   }
