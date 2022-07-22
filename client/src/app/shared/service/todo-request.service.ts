@@ -1,20 +1,20 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Todo } from '../interface/interfaces';
-import { UrlServerService } from './url-server.service';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { Todo } from "../interface/interfaces";
+import { UrlServerService } from "./url-server.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class TodoRequestService {
   constructor(private http: HttpClient, private urlServer: UrlServerService) {}
 
-  url: string = this.urlServer.urlFull;
+  url: string = this.urlServer.url;
 
   /* Requst in DB for getting Todo */
   todoAll(): Observable<any> {
-    return this.http.get<any>(`${this.url + 'position'}`);
+    return this.http.get<any>(`${this.url + "position"}`);
   }
 
   /* Requst in DB for add TodoItem */
@@ -25,7 +25,7 @@ export class TodoRequestService {
       update: false,
       category: categories,
     };
-    return this.http.post<any>(`${this.url + 'position'}`, todoItem);
+    return this.http.post<any>(`${this.url + "position"}`, todoItem);
   }
 
   /* Requst in DB for remove TodoItem */

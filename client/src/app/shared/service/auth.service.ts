@@ -1,19 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable, tap } from "rxjs";
 // Interafece
-import { User } from '../interface/interfaces';
-import { UrlServerService } from './url-server.service';
+import { User } from "../interface/interfaces";
+import { UrlServerService } from "./url-server.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
   constructor(private http: HttpClient, private urlServer: UrlServerService) {}
 
   private token: string | null = null;
 
-  url: string = this.urlServer.urlFull;
+  url: string = this.urlServer.url;
 
   register(user: User): Observable<User> {
     return this.http.post<User>(`${this.url}auth/register`, user);
@@ -24,7 +24,7 @@ export class AuthService {
       .post<{ token: string }>(`${this.url}auth/login`, user)
       .pipe(
         tap(({ token }) => {
-          localStorage.setItem('auth-token', token);
+          localStorage.setItem("auth-token", token);
           this.setToken(token);
         })
       );

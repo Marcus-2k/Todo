@@ -1,15 +1,18 @@
 import { Injectable } from "@angular/core";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class UrlServerService {
-  constructor() {}
+  constructor() {
+    // this.HOST = process.env.HOST;
+    this.HOST = environment.HOST;
+    this.PORT = environment.PORT;
+  }
 
-  // private urlStart: string = 'http://';
-  private HOST: string = "localhost";
-  private PORT: string = ":5000";
-  // private urlAPI: string = '/api/';
+  private HOST?: string;
+  private PORT?: string;
 
-  urlFull: string = `http://${this.HOST}${this.PORT}/api/`;
+  url: string = `http://${this.HOST}${this.PORT}/api/`;
 }
